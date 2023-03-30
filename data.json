@@ -1,0 +1,80 @@
+[
+    {
+      "owner_img": "./assets/images/avatar-mark-webber.webp",
+      "owner": "Mark Webber",
+      "action": "reacted to your recent post",
+      "notice": "My first tournament today!",
+      "group": "",
+      "mark": true,
+      "time": "1m ago",
+      "member_img": "",
+      "msg": ""
+    },
+    {
+        "owner_img": "./assets/images/avatar-angela-gray.webp",
+        "owner": "Angela Gray",
+        "action": "followed you",
+        "notice": "",
+        "group": "",
+        "mark": true,
+        "time": "5m ago",
+        "member_img": "",
+        "msg": ""
+      },
+      {
+        "owner_img": "./assets/images/avatar-jacob-thompson.webp",
+        "owner": "Jacob Thompson",
+        "action": "has joined your group",
+        "notice": "",
+        "group": "Chess Club",
+        "mark": true,
+        "time": "1 day ago",
+        "member_img": "",
+        "msg": ""
+      },
+      {
+        "owner_img": "./assets/images/avatar-rizky-hasanuddin.webp",
+        "owner": "Rizky Hasanuddin",
+        "action": "sent you a private message",
+        "notice": "",
+        "group": "",
+        "mark": false,
+        "time": "5 days ago",
+        "member_img": "",
+        "msg": "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game."
+      },
+      {
+        "owner_img": "./assets/images/avatar-kimberly-smith.webp",
+        "owner": "Kimberly Smith",
+        "action": "commented on your picture",
+        "notice": "",
+        "group": "",
+        "mark": false,
+        "time": "1 week ago",
+        "member_img": "./assets/images/image-chess.webp",
+        "msg": ""
+      },
+      {
+        "owner_img": "./assets/images/avatar-nathan-peterson.webp",
+        "owner": "Nathan Peterson",
+        "action": "reacted to your recent post",
+        "notice": "5 end-game strategies to increase your win rate",
+        "group": "",
+        "mark": false,
+        "time": "2 weeks ago",
+        "member_img": "",
+        "msg": ""
+      },
+      {
+        "owner_img": "./assets/images/avatar-anna-kim.webp",
+        "owner": "Anna Kim",
+        "action": "left the group",
+        "notice": "",
+        "group": "Chess Club",
+        "mark": false,
+        "time": "2 weeks ago",
+        "member_img": "",
+        "msg": ""
+      }
+  ]
+  

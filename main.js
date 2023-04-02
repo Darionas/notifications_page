@@ -28,7 +28,7 @@ async function getJSON(file) {
                 <span class="main__content-action">${item.action}&#8201;</span>
                 ${item.notice.length > 0 ? `<span class="main__content-notice">${item.notice}&#8201;</span>` : `<span class="main__content-notice main__txt" style="display:none">Hello</span>`}
                 ${item.group.length > 0 ? `<span class="main__content-group">${item.group}&#8201;</span>` : `<span class="main__content-group main__txt" style="display:none">Hello</span>`}
-                ${item.mark == true ? `<img class="main__content-mark" src="/assets/images/circle.jpg" alt="circle" style="width: 0.5rem;" />` : `<img class="circle" src="/assets/images/circle.jpg" alt="circle" style="display: none" />`}<br/>
+                ${item.mark === true ? `<img class="main__content-mark" src="assets/images/circle.jpg" alt="circle" style="width: 0.5rem;" />` : `<img class="circle" src="/assets/images/circle.jpg" alt="circle" style="display: none" />`}<br/>
                 <span class="main__time">${item.time}</span>
               </div>  
               ${item.msg.length > 0 ? `<span class="main__msg">${item.msg}&#8201;</span>` : `<span class="main__msg main__txt" style="display:none">Hello</span>`}

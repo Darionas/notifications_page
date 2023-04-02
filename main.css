@@ -196,7 +196,9 @@ body {
 /*---------------------Desktop layout-------------------------*/
 @media screen and (min-width: 48rem) {
 
-
+* {
+    display: none;
+}
 
 /* style 1st component - desktop */
 

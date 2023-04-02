@@ -20,7 +20,7 @@
 - [x] Create drawings for mobile/desktop from design (structure of design)(1st task)
 - [x] Create of repo (2nd task)
 - [x] Create HTML layout (3rd task)
-- [ ] Create CSS layout according style guides (4th task)
+- [X] Create CSS layout according style guides (4th task)
 - [ ] Create grid layout for mobile first (5th task)
 - [ ] Craete grid layout for desktop (6th task)
 - [ ] Implement JavaScript (7th task)

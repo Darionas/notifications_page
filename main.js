@@ -2,11 +2,11 @@
 /*jshint esversion: 8*/
 
 const notifications = document.querySelector('.main__notifications');
-let mark;
+
 
 getJSON('data.json');
-
 async function getJSON(file) {
+  //fetch data from data.json
     const myObject = await fetch(file);
     try {
         const myData = await myObject.text();
@@ -18,7 +18,7 @@ async function getJSON(file) {
             notifications.appendChild(results);
             //hide alt attribute value when src attribute value is not present 
             //https://stackoverflow.com/questions/36305805/how-to-hide-alt-text-using-css-when-the-image-is-not-present#answer-49105591
-            console.log(item);
+            //console.log(item);
             results.innerHTML =
             `<div class="main__container">
               <img class="main__owner-img" src="${item.owner_img}" alt="${item.owner}" />
@@ -34,6 +34,14 @@ async function getJSON(file) {
               ${item.msg.length > 0 ? `<span class="main__msg">${item.msg}&#8201;</span>` : `<span class="main__msg main__txt" style="display:none">Hello</span>`}
             </div>`.trim();
 
+            //color not read massage
+            const main_container = document.getElementsByClassName('main__container');
+            for(let i=0; i < main_container.length; i++) {
+                if(item.mark === true && item.mark != null && item.mark != undefined) {
+                    main_container[i].classList.add('main__container--colored');
+                }
+            }
+          
         }
        
 

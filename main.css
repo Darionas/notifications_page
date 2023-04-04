@@ -89,6 +89,10 @@ body {
     border-radius: .2rem;
 }
 
+.notifications__number--hide {
+    display: none;
+}
+
 .header__switch {
     color: var(--clr-dark-grayish-blue);
 }
@@ -179,7 +183,12 @@ body {
 
 .main__content-mark {
     display: inline-block;
+    align-self: center;
     /*border: 2px solid green;*/
+}
+
+.main__content-mark--hide {
+    display: none;
 }
 
 .main__time {

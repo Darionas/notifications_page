@@ -2,7 +2,8 @@
 /*jshint esversion: 8*/
 
 const notifications = document.querySelector('.main__notifications');
-
+const num = document.querySelector('.notifications__number');
+let minus;
 
 getJSON('data.json');
 async function getJSON(file) {
@@ -35,11 +36,38 @@ async function getJSON(file) {
             </div>`.trim();
 
             //color not read massage
-            const main_container = document.getElementsByClassName('main__container');
-            for(let i=0; i < main_container.length; i++) {
+            const container_colored = document.getElementsByClassName('main__container');
+            for(let i=0; i < container_colored.length; i++) {
                 if(item.mark === true && item.mark != null && item.mark != undefined) {
-                    main_container[i].classList.add('main__container--colored');
+                    container_colored[i].classList.add('main__container--colored');
                 }
+            }
+
+            //notifications number
+            //Get number of true values in object
+            //https://stackoverflow.com/questions/51915341/get-count-of-true-values-in-json-with-javascript#answer-51915372
+            const n = Object.keys(get).filter(k => get[k].mark);
+            if(n.length < 1) {
+                num.classList.add('notifications__number--hide');
+            } else {
+                num.innerHTML = n.length;
+            }
+
+            //make notice has read
+            const mark = document.getElementsByClassName('main__content-mark');
+            const container_uncolored = document.getElementsByClassName('main__container');
+                for(let i=0; i < container_uncolored.length; i++) {
+                  container_uncolored[i].addEventListener('click', function() {
+                      if(item.mark === true && item.mark != null && item.mark != undefined) {
+                          container_uncolored[i].classList.remove('main__container--colored');
+                          mark[i].classList.add('main__content-mark--hide');
+                  }
+                   minus = (function() {
+                    let current = document.querySelector('.notifications__number').innerHTML;
+                    return function(){current -= 1; return current.innerHTML;}
+                  })();
+                  //alert(minus());
+              })
             }
           
         }

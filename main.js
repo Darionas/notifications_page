@@ -3,7 +3,8 @@
 
 const notifications = document.querySelector('.main__notifications');
 const num = document.querySelector('.notifications__number');
-let minus;
+const unmark = document.querySelector('.header__switch');
+
 
 getJSON('data.json');
 async function getJSON(file) {
@@ -27,15 +28,15 @@ async function getJSON(file) {
                 <img class="main__content-img" src="${item.member_img}" onerror="this.style.display='none';" alt="Member" />
                 <span class="main__content-owner">${item.owner}&#8201;</span>
                 <span class="main__content-action">${item.action}&#8201;</span>
-                ${item.notice.length > 0 ? `<span class="main__content-notice">${item.notice}&#8201;</span>` : `<span class="main__content-notice main__txt" style="display:none">Hello</span>`}
-                ${item.group.length > 0 ? `<span class="main__content-group">${item.group}&#8201;</span>` : `<span class="main__content-group main__txt" style="display:none">Hello</span>`}
-                ${item.mark === true ? `<img class="main__content-mark" src="assets/images/circle.jpg" alt="circle" style="width: 0.5rem;" />` : `<img class="circle" src="/assets/images/circle.jpg" alt="circle" style="display: none" />`}<br/>
+                ${item.notice.length > 0 ? `<span class="main__content-notice">${item.notice}&#8201;</span>` : `<span class="main__content-notice" style="display:none">Hello</span>`}
+                ${item.group.length > 0 ? `<span class="main__content-group">${item.group}&#8201;</span>` : `<span class="main__content-group" style="display:none">Hello</span>`}
+                ${item.mark === true ? `<img class="main__content-mark" src="assets/images/circle.jpg" alt="circle" style="width: 0.5rem;" />` : `<img class="circle" src="/assets/images/circle.jpg" alt="circle" style="display: none;" onerror="this.style.display='none';"/>`}<br/>
                 <span class="main__time">${item.time}</span>
               </div>  
-              ${item.msg.length > 0 ? `<span class="main__msg">${item.msg}&#8201;</span>` : `<span class="main__msg main__txt" style="display:none">Hello</span>`}
+              ${item.msg.length > 0 ? `<span class="main__msg">${item.msg}&#8201;</span>` : `<span class="main__msg" style="display:none">Hello</span>`}
             </div>`.trim();
 
-            //color not read massage
+            //color not have read massage
             const container_colored = document.getElementsByClassName('main__container');
             for(let i=0; i < container_colored.length; i++) {
                 if(item.mark === true && item.mark != null && item.mark != undefined) {
@@ -43,7 +44,7 @@ async function getJSON(file) {
                 }
             }
 
-            //notifications number
+            //get notifications number
             //Get number of true values in object
             //https://stackoverflow.com/questions/51915341/get-count-of-true-values-in-json-with-javascript#answer-51915372
             const n = Object.keys(get).filter(k => get[k].mark);
@@ -57,18 +58,23 @@ async function getJSON(file) {
             const mark = document.getElementsByClassName('main__content-mark');
             const container_uncolored = document.getElementsByClassName('main__container');
                 for(let i=0; i < container_uncolored.length; i++) {
-                  container_uncolored[i].addEventListener('click', function() {
-                      if(item.mark === true && item.mark != null && item.mark != undefined) {
-                          container_uncolored[i].classList.remove('main__container--colored');
-                          mark[i].classList.add('main__content-mark--hide');
-                  }
-                   minus = (function() {
-                    let current = document.querySelector('.notifications__number').innerHTML;
-                    return function(){current -= 1; return current.innerHTML;}
-                  })();
-                  //alert(minus());
-              })
-            }
+                    container_uncolored[i].addEventListener('click', function(e) {
+                        container_uncolored[i].classList.remove('main__container--colored');
+                        mark[i].classList.add('main__content-mark--hide');
+                    })
+                }
+
+            //make all notices have read
+            const container_uncolored_all = document.querySelectorAll('.main__container');
+            unmark.addEventListener('click', function() {
+                if(item.mark === true && item.mark != null && item.mark != undefined) {
+                    container_uncolored_all.forEach((container, key) => {
+                        container.classList.remove('main__container--colored');
+                        mark[key].classList.add('main__content-mark--hide');
+                    })
+                }
+              
+            })
           
         }
        

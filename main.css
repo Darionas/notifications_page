@@ -56,6 +56,7 @@ body {
         'main'
         'attribution';
     justify-items: center;
+    justify-content: center;
     max-width: 24rem;
     /*border: 2px solid green;*/
 }
@@ -159,6 +160,7 @@ body {
 
 .main__content-img {
     float: right;
+    margin: .2rem;
     width: 2.5rem;
 }
 
@@ -207,28 +209,85 @@ body {
     border-radius: .2rem;
 }
 
-.main__msg:hover {
-    background-color: var(--clr-light-grayish-blue2);
-    border: none;
-}
-
-
 /* style 3rd component - mobile */
 
 
 /*---------------------Desktop layout-------------------------*/
 @media screen and (min-width: 48rem) {
 
-* {
-    display: none;
+body {
+    background-color: var(--clr-very-light-grayish-blue);
+    align-items: center;
+}
+    
+.grid_container {
+    margin: 2rem 0 2rem 0;
+    max-width: 43rem;
+    background-color: var(--clr-white);
+    border-radius: .7rem;
+    max-height: 55rem;
+    /*border: 2px solid green;*/
 }
 
 /* style 1st component - desktop */
+.header {
+    margin: 2rem 0 2rem 0;
+    max-width: 95%;
+    /*border: 2px solid green;*/
+}
 
+.header__switch:hover {
+    cursor: pointer;
+    color: var(--clr-blue);
+}
 
 /* style 2nd component - desktop */ 
+.main__notifications {
+    max-width: 95%;
+    /*border: 2px solid red;*/
+}
 
+.main__container {
+    max-width: 100%;
+    /*border: 2px solid green;*/
+}
 
+.main__content {
+    max-width: 36.5rem;
+    /*border: 2px solid orange;*/
+}
+
+.main__content-img:hover {
+    cursor: pointer;
+    border-radius: .4rem;
+    border: 2px solid white;
+    outline: 1px solid var(--clr-light-grayish-blue2);
+}
+
+.main__content-owner:hover {
+    cursor: pointer;
+    color: var(--clr-blue);
+}
+
+.main__content-notice:hover {
+    cursor: pointer;
+    color: var(--clr-blue);
+}
+
+.main__content-group:hover {
+    cursor: pointer;
+}
+
+.main__msg {
+    max-width: 100%;
+    cursor: pointer;
+    /*border: 2px solid blue;*/
+}
+
+.main__msg:hover {
+    background-color: var(--clr-light-grayish-blue2);
+    border: none;
+}
 
 /*style 3rd component - desktop */
 

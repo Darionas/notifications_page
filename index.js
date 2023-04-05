@@ -45,7 +45,7 @@ async function getJSON(file) {
               ${item.msg.length > 0 ? `<span class="main__msg">${item.msg}&#8201;</span>` : `<span class="main__msg" style="display:none">Hello</span>`}
             </div>`.trim();
 
-            //color not have read massage
+            //color have not read massage
             for(let i=0; i < container_colored.length; i++) {
                 if(item.mark === true && item.mark != null && item.mark != undefined) {
                     container_colored[i].classList.add('main__container--colored');

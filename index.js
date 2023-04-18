@@ -1,10 +1,10 @@
-'Use strict';
+'use strict';
 /*jshint esversion: 8*/
 
 const notifications = document.querySelector('.main__notifications');
 const num = document.querySelector('.notifications__number');
 const unmark = document.querySelector('.header__switch');
-
+let data;
 
 getJSON('data.json');
 async function getJSON(file) {
@@ -12,8 +12,15 @@ async function getJSON(file) {
     const myObject = await fetch(file);
     try {
         const myData = await myObject.text();
-        const get = JSON.parse(myData);
-        
+  //place json to localStorage
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem('data', myData);
+        } else {
+            alert('Sorry! No Web Storage support.');
+        }
+        data = localStorage.getItem('data');
+        const get = JSON.parse(data);
+        //console.log(get);
         
         for(const item of get) {
             const results = document.createElement('div');
@@ -47,38 +54,47 @@ async function getJSON(file) {
             //get notifications number
             //Get number of true values in object
             //https://stackoverflow.com/questions/51915341/get-count-of-true-values-in-json-with-javascript#answer-51915372
-            const n = Object.keys(get).filter(k => get[k].mark);
-            if(n.length < 1) {
-                num.classList.add('notifications__number--hide');
-            } else {
-                num.innerHTML = n.length;
+            function readed() {
+                const n = Object.keys(get).filter(k => get[k].mark);
+                if(n.length < 1) {
+                    num.classList.add('notifications__number--hide');
+                } else {
+                    num.innerHTML = n.length;
+                }
             }
+            readed();
 
             //make notice has read
             const mark = document.getElementsByClassName('main__content-mark');
-            const container_uncolored = document.getElementsByClassName('main__container');
-                for(let i=0; i < container_uncolored.length; i++) {
-                    container_uncolored[i].addEventListener('click', function(e) {
-                        container_uncolored[i].classList.remove('main__container--colored');
+            /*const container_uncolor = document.getElementsByClassName('main__container');
+                for(let i=0; i < container_uncolor.length; i++) {
+                    container_uncolor[i].addEventListener('click', function(e) {
+                        container_uncolor[i].classList.remove('main__container--colored');
                         mark[i].classList.add('main__content-mark--hide');
-                    })
-                }
+                       
+                       
+                    });
+                }*/
 
             //make all notices have read
-            const container_uncolored_all = document.querySelectorAll('.main__container');
+            //const container_uncolor_all = document.querySelectorAll('.main__container');
             unmark.addEventListener('click', function() {
-                if(item.mark === true && item.mark != null && item.mark != undefined) {
-                    container_uncolored_all.forEach((container, key) => {
-                        container.classList.remove('main__container--colored');
-                        mark[key].classList.add('main__content-mark--hide');
-                    })
+                for(let i=0; i < container_colored.length; i++) {
+                    container_colored[i].classList.remove('main__container--colored');
+                    if(mark[i]) {
+                        mark[i].classList.add('main__content-mark--hide');
+                    }
                 }
-              
+                
+                for(let i=0; i < get.length; i++) {
+                    get[0].mark= false; get[1].mark= false; get[2].mark= false;
+                    localStorage.setItem('data', JSON.stringify(get));
+                } 
+                readed();              
             })
           
         }
        
-
     } catch(error) {
         console.log(error);
     }

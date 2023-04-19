@@ -4,6 +4,8 @@
 const notifications = document.querySelector('.main__notifications');
 const num = document.querySelector('.notifications__number');
 const unmark = document.querySelector('.header__switch');
+const mark = document.getElementsByClassName('main__content-mark');
+const container_colored = document.getElementsByClassName('main__container');
 let data;
 
 getJSON('data.json');
@@ -44,7 +46,6 @@ async function getJSON(file) {
             </div>`.trim();
 
             //color not have read massage
-            const container_colored = document.getElementsByClassName('main__container');
             for(let i=0; i < container_colored.length; i++) {
                 if(item.mark === true && item.mark != null && item.mark != undefined) {
                     container_colored[i].classList.add('main__container--colored');
@@ -65,19 +66,22 @@ async function getJSON(file) {
             readed();
 
             //make notice has read
-            const mark = document.getElementsByClassName('main__content-mark');
-            /*const container_uncolor = document.getElementsByClassName('main__container');
-                for(let i=0; i < container_uncolor.length; i++) {
-                    container_uncolor[i].addEventListener('click', function(e) {
-                        container_uncolor[i].classList.remove('main__container--colored');
-                        mark[i].classList.add('main__content-mark--hide');
-                       
-                       
+                for(let i=0; i < container_colored.length; i++) {
+                    container_colored[i].addEventListener('click', function() {
+            //https://stackoverflow.com/questions/9587070/if-statement-to-find-a-class-in-javascript#answer-9587185
+                        if(container_colored[i].classList.contains('main__container--colored')) {
+                            container_colored[i].classList.remove('main__container--colored');
+                            mark[i].classList.add('main__content-mark--hide');
+                        for(let j=0; j < get.length; j++) {
+                            get[i].mark = false;
+                            localStorage.setItem('data', JSON.stringify(get));
+                        }     
+                            readed();
+                        }    
                     });
-                }*/
+                }
 
             //make all notices have read
-            //const container_uncolor_all = document.querySelectorAll('.main__container');
             unmark.addEventListener('click', function() {
                 for(let i=0; i < container_colored.length; i++) {
                     container_colored[i].classList.remove('main__container--colored');
@@ -85,7 +89,6 @@ async function getJSON(file) {
                         mark[i].classList.add('main__content-mark--hide');
                     }
                 }
-                
                 for(let i=0; i < get.length; i++) {
                     get[0].mark= false; get[1].mark= false; get[2].mark= false;
                     localStorage.setItem('data', JSON.stringify(get));

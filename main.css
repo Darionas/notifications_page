@@ -202,7 +202,9 @@ body {
     border-radius: .2rem;
 }
 
-a {
+a > .main__content-img, .main__content-owner, 
+    .main__content-notice, .main__content-group,
+    .main__msg {
     text-decoration: none;
 }
 

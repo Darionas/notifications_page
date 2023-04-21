@@ -34,15 +34,15 @@ async function getJSON(file) {
             `<div class="main__container">
               <img class="main__owner-img" src="${item.owner_img}" alt="${item.owner}" />
               <div class="main__content" style="width: 75vw;">
-                <a href="#note" class="main__content-img"><img class="img" src="${item.member_img}" onerror="this.style.display='none';" alt="Member" /></a>
-                <a href="#note" class="main__content-owner">${item.owner}&#8201;</a>
+                <a href="#note" class="main__content-img" aria-label="member of group"><img class="img" src="${item.member_img}" onerror="this.style.display='none';" alt="Member" /></a>
+                <a href="#note" class="main__content-owner" aria-label="owner">${item.owner}&#8201;</a>
                 <span class="main__content-action">${item.action}&#8201;</span>
-                ${item.notice.length > 0 ? `<a href="#note" class="main__content-notice">${item.notice}&#8201;</a>` : `<a href="#" class="main__content-notice" style="display:none">Hello</a>`}
-                ${item.group.length > 0 ? `<a href="#note" class="main__content-group">${item.group}&#8201;</a>` : `<a href="#" class="main__content-group" style="display:none">Hello</a>`}
+                ${item.notice.length > 0 ? `<a href="#note" class="main__content-notice" aria-label="note">${item.notice}&#8201;</a>` : `<a href="#" class="main__content-notice" style="display:none">Hello</a>`}
+                ${item.group.length > 0 ? `<a href="#note" class="main__content-group" aria-label="notifications group">${item.group}&#8201;</a>` : `<a href="#" class="main__content-group" style="display:none">Hello</a>`}
                 ${item.mark === true ? `<img class="main__content-mark" src="assets/images/circle.jpg" alt="circle" style="width: 0.5rem;" />` : `<img class="circle" src="/assets/images/circle.jpg" alt="circle" style="display: none;" onerror="this.style.display='none';"/>`}<br/>
                 <span class="main__time">${item.time}</span>
               </div>  
-              ${item.msg.length > 0 ? `<a href="#note" class="main__msg">${item.msg}&#8201;</a>` : `<a href="#" class="main__msg" style="display:none">Hello</a>`}
+              ${item.msg.length > 0 ? `<a href="#note" class="main__msg" aria-label="message">${item.msg}&#8201;</a>` : `<a href="#" class="main__msg" style="display:none">Hello</a>`}
             </div>`.trim();
 
             //color have not read massage

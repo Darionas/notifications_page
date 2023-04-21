@@ -42,11 +42,13 @@ Users should be able to:
  * Create drawing from design (structure of design)
  * Create of repo
  * Create HTML layout
+ * Create data.json
  * Create CSS layout according style guides
  * Create grid layout for mobile first
  * Craete grid layout for desktop
  * Implement JavaScript:
     * fetch data from data.json file
+    * load data.json to localStorage
 
 ### Built with
 

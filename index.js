@@ -34,15 +34,15 @@ async function getJSON(file) {
             `<div class="main__container">
               <img class="main__owner-img" src="${item.owner_img}" alt="${item.owner}" />
               <div class="main__content" style="width: 75vw;">
-                <img class="main__content-img" src="${item.member_img}" onerror="this.style.display='none';" alt="Member" />
-                <span class="main__content-owner">${item.owner}&#8201;</span>
+                <a href="#" class="main__content-img"><img class="img" src="${item.member_img}" onerror="this.style.display='none';" alt="Member" /></a>
+                <a href="#" class="main__content-owner">${item.owner}&#8201;</a>
                 <span class="main__content-action">${item.action}&#8201;</span>
-                ${item.notice.length > 0 ? `<span class="main__content-notice">${item.notice}&#8201;</span>` : `<span class="main__content-notice" style="display:none">Hello</span>`}
-                ${item.group.length > 0 ? `<span class="main__content-group">${item.group}&#8201;</span>` : `<span class="main__content-group" style="display:none">Hello</span>`}
+                ${item.notice.length > 0 ? `<a href="#" class="main__content-notice">${item.notice}&#8201;</a>` : `<a href="#" class="main__content-notice" style="display:none">Hello</a>`}
+                ${item.group.length > 0 ? `<a href="#" class="main__content-group">${item.group}&#8201;</a>` : `<a href="#" class="main__content-group" style="display:none">Hello</a>`}
                 ${item.mark === true ? `<img class="main__content-mark" src="assets/images/circle.jpg" alt="circle" style="width: 0.5rem;" />` : `<img class="circle" src="/assets/images/circle.jpg" alt="circle" style="display: none;" onerror="this.style.display='none';"/>`}<br/>
                 <span class="main__time">${item.time}</span>
               </div>  
-              ${item.msg.length > 0 ? `<span class="main__msg">${item.msg}&#8201;</span>` : `<span class="main__msg" style="display:none">Hello</span>`}
+              ${item.msg.length > 0 ? `<a href="#" class="main__msg">${item.msg}&#8201;</a>` : `<a href="#" class="main__msg" style="display:none">Hello</a>`}
             </div>`.trim();
 
             //color have not read massage
@@ -68,6 +68,7 @@ async function getJSON(file) {
             //make notice has read
                 for(let i=0; i < container_colored.length; i++) {
                     container_colored[i].addEventListener('click', function() {
+            //find out if html element has certain class value
             //https://stackoverflow.com/questions/9587070/if-statement-to-find-a-class-in-javascript#answer-9587185
                         if(container_colored[i].classList.contains('main__container--colored')) {
                             container_colored[i].classList.remove('main__container--colored');
